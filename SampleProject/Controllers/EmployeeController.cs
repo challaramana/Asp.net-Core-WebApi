@@ -27,7 +27,7 @@ namespace SampleProject.Controllers
         public IActionResult CreateEmplyoee(EmployeeDetails employeeDetails)
         {
             _employeeRepository.CreateEmplyoee(employeeDetails);
-            return Ok();
+            return Ok(employeeDetails);
         }
         /// <summary>
         /// Get All employee details
