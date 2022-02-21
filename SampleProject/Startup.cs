@@ -11,6 +11,7 @@ using SampleProject.Data;
 using SampleProject.Interface;
 using SampleProject.Repository;
 using SampleProject.UnitOfWork;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,13 @@ namespace SampleProject
 
             // services.AddScoped<IUnitOfWork,UnitofWork>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1.0", new Info { Title = "EMS", Version = "v1.0", Description = "Employee Management System" });
+                //   c.OperationFilter<FileUploadedOperation>(); ////Register File Upload Operation Filter
+                //c.DescribeAllEnumsAsStrings();
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +63,11 @@ namespace SampleProject
             }
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "Fundoo (V 1.0)");
+            });
             app.UseMvc();
         }
     }

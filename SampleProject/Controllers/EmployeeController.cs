@@ -67,7 +67,7 @@ namespace SampleProject.Controllers
         /// </summary>
         /// <param name="employeeDetails"></param>
         /// <returns></returns>
-        [HttpPost("UpdateEmployee")]
+        [HttpPut("UpdateEmployee")]
         public IActionResult UpdateEmployee(EmployeeDetails employeeDetails)
         {
             _employeeRepository.Update(employeeDetails);
