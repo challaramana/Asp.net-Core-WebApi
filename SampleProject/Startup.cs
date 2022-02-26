@@ -61,7 +61,7 @@ namespace SampleProject
             {
                 app.UseHsts();
             }
-            app.UseCors(i => i.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:4200"));
+
             app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
