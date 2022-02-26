@@ -1,0 +1,78 @@
+<form style="overflow-x:hidden" #editEmployeeForm="ngForm" (ngSubmit)="editEmployee()">
+    <div class="row col-sm-12 mb-1">
+        <span class=" row col-sm-12 border  pl-5 pb-1 mb-1 justify-content-center font-weight-bold"
+            style="background-color: #dee2e6;">
+            Employee Registration
+        </span>
+    </div>
+    <div class="offset-3">
+        <div class="row col-sm-12 mb-1" id="">
+            <div class=" col-sm-3">
+                <div class="">
+                    <label class="">Employee Full Name:</label>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-1">
+                <input class="form-control" type="text" id="" name="name" [(ngModel)]="model.name"
+                    placeholder="Full Name" autocomplete="off" required maxlength="50" #name="ngModel" />
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                    <div *ngIf="name.errors?.['required']">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors?.['minlength']">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="name.errors?.['forbiddenName']">
+                        Name cannot be Bob.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row col-sm-12 mb-1 ml-1" id="">
+            <div class=" col-sm-3">
+                <div class="">
+                    <label class="">Email:</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" id="" name="email" [(ngModel)]="model.email" placeholder="Email"
+                    autocomplete="off" #email="ngModel" required maxlength="50" />
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+
+                    <div *ngIf="email.errors?.['required']">
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors?.['minlength']">
+                        Email must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row col-sm-12 mb-1" id="">
+            <div class=" col-sm-3">
+                <div class="">
+                    <label class="">MobileNumber:</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" id="" name="mobileNumber" [(ngModel)]="model.mobileNumber"
+                    placeholder="Mobile Number" #mobileNumber="ngModel" autocomplete="off" maxlength="50" required />
+                <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)" class="alert">
+                    <div *ngIf="mobileNumber.errors?.['required']">
+                        MobileNumber is required.
+                    </div>
+                    <div *ngIf="mobileNumber.errors?.['minlength']">
+                        MobileNumber must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row col-sm-12 mt-3 justify-content-center offset-1">
+            <div>
+                <button [disabled]="!editEmployeeForm.valid" type="submit" class="btn btn-success"
+                    style="width:165px">Save</button>
+            </div>
+        </div>
+    </div>
+
+</form>
